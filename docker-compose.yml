@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql:5
+    volumes:
+      - ./dist/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=madziki
+      - MYSQL_USER=madziki_user
+      - MYSQL_PASSWORD=madziki
+      - MYSQL_PWD=madziki
+    ports:
+      - 3306
+
+  #app:
+    #build: ./app
+    #volumes:
+      #- ./app:/usr/src/app
+    #ports:
+      #- 3000:3000
+    #depends_on:
+      #- db
+  #web:
+    #build: ./web
+    #ports:
+      #- 80:80
+      #- 443:443
+    #depends_on:
+      #- app
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./build.gradle:/usr/src/app/build.gradle
+      - ./src/:/usr/src/app/src:ro
+    depends_on:
+      - db
+

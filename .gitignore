@@ -1,0 +1,11 @@
+# Project files.
+.DS_Store
+NERD_tree_1
+.idea
+.settings
+
+# Transient artifacts.
+.gradle
+build
+build-test
+dist
