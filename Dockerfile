@@ -20,7 +20,7 @@ RUN apt-get install -y netcat
 #RUN set -x source SDKMAN_DIR/bin/sdkman-init.sh
 
 # Install Gradle.
-#RUN yes | /bin/bash -l -c 'sdk install gradle 3.4.1'
+#RUN yes | /bi  n/bash -l -c 'sdk install gradle 3.4.1'
 
 #ENV PATH="/opt/gtk/bin:${PATH}"
 
@@ -39,7 +39,7 @@ ADD ./gradle gradle
 #RUN sh -c 'touch /app.jar'
 ENV JAVA_OPTS=""
 
-RUN ./gradlew build
+RUN ./gradlew assemble
 
 #./gradlew build && java -jar build/libs/gs-spring-boot-docker-0.1.0.jar
 
@@ -52,4 +52,5 @@ RUN ./gradlew build
 # Migrate the database.
 #RUN ./gradlew flywayMigrate
 
-CMD while ! nc -z db 3306; do sleep 3; done && ./gradlew flywayMigrate && java -jar ./build/libs/madziki-api-0.1.0.jar
+CMD while ! nc -z db 3306; do sleep 3; done && ./gradlew flywayMigrate --stacktrace && java -jar ./build/libs/madziki-api-0.1.0.jar
+#CMD tail -f /dev/null

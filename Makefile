@@ -22,7 +22,7 @@ shell-db:
 	docker-compose exec db /bin/bash
 
 mysql:
-	docker-compose exec db mysql -u madziki_user -D madziki -h db
+	docker-compose exec db mysql -u madziki_user -D madziki -h db -p
 
 status:
 	docker ps -a

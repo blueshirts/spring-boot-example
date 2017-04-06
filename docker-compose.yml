@@ -3,13 +3,10 @@ version: '3'
 services:
 
   db:
-    image: mysql:5
+    build: ./db
     volumes:
       - ./dist/mysql:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=madziki
-      - MYSQL_USER=madziki_user
-      - MYSQL_PASSWORD=madziki
       - MYSQL_PWD=madziki
     ports:
       - 3306
