@@ -6,8 +6,6 @@ services:
     build: ./db
     volumes:
       - ./dist/mysql:/var/lib/mysql
-    environment:
-      - MYSQL_PWD=madziki
     ports:
       - 3306
 

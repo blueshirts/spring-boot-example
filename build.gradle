@@ -20,7 +20,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'org.flywaydb.flyway'
 
 flyway {
-    url = 'jdbc:mysql://db:3306/madziki'
+    url = 'jdbc:mysql://db:3306/madziki?verifyServerCertificate=false&useSSL=false'
     user = 'madziki_user'
     password = 'madziki'
     schemas = ['madziki']
